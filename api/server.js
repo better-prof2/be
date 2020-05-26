@@ -4,6 +4,8 @@ const server = express()
 // Importing Middleware
 const cors = require('cors')
 const helmet = require('helmet')
+const logger = require('../middleware/logger')
+
 
 // Env 
 const dotenv = require('dotenv')
@@ -15,6 +17,7 @@ dotenv.config()
 server.use(express.json())
 server.use(helmet())
 server.use(cors())
+server.use(logger)
 
 server.get('/', (req, res, next) => {
     res.json({
