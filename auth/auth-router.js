@@ -7,7 +7,7 @@ const { jwtSecret } = require('../config/secrets')
 const { checkDuplicates, validateUser } = require("../users/users-helper");
 
 const Users = require("../users/users-model");
-const Students = require("../students/students-model");
+// const Students = require("../students/students-model");
 
 //REGISTER PROFESSOR
 
@@ -173,9 +173,8 @@ function generateToken(user) {
   return jwt.sign(payload, jwtSecret, options);
 }
 
+
 module.exports = router;
-
-
 
 
 router.post("/login", (req, res) => {
@@ -209,3 +208,5 @@ router.post("/login", (req, res) => {
       return res.status(500).json({ errorMessage: "error logging in" });
     });
 });
+
+
