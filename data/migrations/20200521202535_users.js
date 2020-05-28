@@ -50,7 +50,7 @@ exports.up = async function(knex, Promise) {
       tbl
         .date("due_date")
         .notNullable()
-        .defaultTo("2020-12-12");
+        .defaultTo("2021-01-01");
     })
 
     .createTable("messages", tbl => {
