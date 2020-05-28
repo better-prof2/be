@@ -15,6 +15,9 @@ dotenv.config()
 // Importing server routers 
 const authRouter = require("../auth/auth-router")
 const usersRouter = require('../users/users-router')
+const studentsRouter = require("../students/students-router")
+const projectsRouter = require("../projects/projects-router")
+const messagesRouter = require("../messages/messages-router")
 
 // middleware
 server.use(express.json())
@@ -24,6 +27,9 @@ server.use(logger)
 
 server.use("/api/auth", authRouter)
 server.use("/api/users", authenticate, usersRouter)
+server.use("api/students", studentsRouter)
+server.use("/api/projects", projectsRouter)
+server.use("/api/messages", messagesRouter)
 
 server.get('/', (req, res) => {
     res.json({
