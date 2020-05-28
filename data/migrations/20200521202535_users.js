@@ -127,3 +127,4 @@ exports.down = async function(knex, Promise) {
     .dropTableIfExists("tasks")
     .dropTableIfExists("students")
     .dropTableIfExists("users");
+}
