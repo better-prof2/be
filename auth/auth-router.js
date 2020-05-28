@@ -7,7 +7,7 @@ const { jwtSecret } = require('../config/secrets')
 const { checkDuplicates, validateUser } = require("../users/users-helper");
 
 const Users = require("../users/users-model");
-// const Students = require("../students/students-model");
+const Students = require("../students/students-model");
 
 //REGISTER PROFESSOR
 
