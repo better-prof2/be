@@ -11,6 +11,13 @@ module.exports = {
       directory: "./data/migrations",
       tableName: "knex_migrations"
     },
+    seeds: {
+      directory: './data/seeds',
+    },
+    pool: {
+      afterCreate: (conn, done) => {
+          conn.run("PRAGMA foreign_keys = ON", done)
+    },
     useNullAsDefault: true
   },
 
