@@ -30,9 +30,9 @@ exports.up = async function(knex, Promise) {
         .onDelete("RESTRICT")
         .onUpdate("CASCADE");
     })
-    .createTable("tasks", tbl => {
+    .createTable("projects", tbl => {
       tbl.increments();
-      tbl.text("task", 128).notNullable();
+      tbl.text("project", 128).notNullable();
       tbl
         .integer("professor_id")
         .notNullable()
@@ -74,9 +74,9 @@ exports.up = async function(knex, Promise) {
         .onDelete("RESTRICT")
         .onUpdate("CASCADE");
       tbl
-        .integer("task_id")
+        .integer("project_id")
         .references("id")
-        .inTable("tasks")
+        .inTable("projects")
         .onDelete("RESTRICT")
         .onUpdate("CASCADE");
       tbl.timestamp("created_at").defaultTo(knex.fn.now());
@@ -93,9 +93,9 @@ exports.up = async function(knex, Promise) {
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
       tbl
-        .integer("task_id")
+        .integer("project_id")
         .references("id")
-        .inTable("tasks")
+        .inTable("projects")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
       tbl
@@ -124,7 +124,7 @@ exports.down = async function(knex, Promise) {
   await knex.schema
     .dropTableIfExists("info")
     .dropTableIfExists("messages")
-    .dropTableIfExists("tasks")
+    .dropTableIfExists("projects")
     .dropTableIfExists("students")
     .dropTableIfExists("users");
 }
