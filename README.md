@@ -32,7 +32,7 @@ Base URL: https://better-professor1.herokuapp.com/
 
 BODY
 
-| NAME | TYPE | REQUIRED | |
+| NAME | TYPE | REQUIRED |
 | ---- | ---- | -------- | 
 | fullname | string | yes | full name |
 | username | string | yes | username (required for login) | 
