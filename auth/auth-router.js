@@ -23,13 +23,13 @@ router.post("/register", checkDuplicates, (req, res) => {
     const token = generateToken(user);
     Users.add(user)
       .then(saved => {
-        if (user.username && user.lastname && user.firstname && user.password && user.email) {
+        if (user.username && user.fullname && user.password && user.email) {
           res.status(201).json({token: token,
-            message: `Welcome Professor ${user.lastname}`, ...user, token });
+            message: `Welcome Professor ${user.fullname}`, ...user, token });
         } else {
           res
             .status(404)
-            .json({ message: "Missing info. User requires a username, lastname, firstname, password and email" });
+            .json({ message: "Missing info. User requires a username, fullname, password and email" });
         }
       })
       .catch(err => {
@@ -48,13 +48,10 @@ router.post("/register", checkDuplicates, (req, res) => {
 router.post("/register/:id", checkDuplicates, (req, res) => {
   let user = req.body;
 
-  if (!user.lastname || user.lastname.length < 2) {
-    return res.status(400).json({ message: "User lastname of at least two letters is required" });
+  if (!user.fullname || user.fullname.length < 5) {
+    return res.status(400).json({ message: "User's fullname of at least two letters is required" });
   }
 
-  if (!user.firstname || user.firstname.length < 2) {
-    return res.status(400).json({ message: "User firstname of at least two letters is required" });
-  }
   if (!user.username || user.username.length < 2) {
     return res.status(400).json({ message: "Username of at least two characters is required" });
   }
@@ -78,13 +75,13 @@ router.post("/register/:id", checkDuplicates, (req, res) => {
     const token = generateToken(user);
     Students.add(user)
       .then(saved => {
-        if (user.username && user.lastname && user.firstname && user.password && user.email && user.professor_id) {
+        if (user.username && user.fullname && user.password && user.email && user.professor_id) {
           res.status(201).json({token: token,
-            message: `Welcome ${user.firstname}!`, ...user, token });
+            message: `Welcome ${user.fullname}!`, ...user, token });
         } else {
           res
             .status(404)
-            .json({ message: "Missing info. User requires a username, lastname, firstname, password, email, and professor id" });
+            .json({ message: "Missing info. User requires a username, fullname, password, email, and professor id" });
         }
       })
       .catch(err => {
@@ -108,7 +105,7 @@ router.post("/login", (req, res) => {
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = generateToken(user);
-        res.status(200).json({ message: `Welcome Professor ${user.lastname}!`, ...user, token });
+        res.status(200).json({ message: `Welcome Professor ${user.fullname}!`, ...user, token });
       } else {
         res.status(401).json({ error: "Invalid login credentials, please re-enter username and password to continue" });
       }
@@ -127,7 +124,7 @@ router.post("/login/students", (req, res) => {
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password) && (professor_id, user.professor_id)) {
         const token = generateToken(user);
-        res.status(200).json({ message: `Welcome ${user.firstname}!`,
+        res.status(200).json({ message: `Welcome ${user.fullname}!`,
          ...user, token });
       } else {
         res.status(401).json({ error: "Invalid login credentials, please re-enter username, password and professor ID" });

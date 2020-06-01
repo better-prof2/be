@@ -13,8 +13,7 @@ function find() {
   const userInfo = {}
   return db("students as s")
   .select(
-        "s.lastname as lastname",
-        "s.firstname as firstname",
+        "s.fullname as fullname",
         "p.id as project_id",
         "p.project as project",
         "p.due_date as due_date")

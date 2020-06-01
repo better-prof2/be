@@ -17,8 +17,7 @@ function find() {
   const userInfo = {};
   return db("students as s")
     .select(   
-      "s.lastname as lastname",
-      "s.firstname as firstname",
+      "s.fullname as fullname",
       "s.email as email",
       "s.id as student_id",
       "t.task as task",
@@ -43,7 +42,7 @@ function findById(id) {
 function findMessages(profMessage) {
   return db("messages as m")
     .select("s.id as student_id",
-    "s.firstname as firstname",
+    "s.fullname as fullname",
     "m.message as message_from_prof", "m.created_at as message_sent", "m.updated_at as message_updated")
     .join("students as s", "m.student_id", "=", "s.id")
     .where("student_id", profMessage);
@@ -54,8 +53,7 @@ function findTasks(studentId) {
   .select("t.id as task_id",
   "t.task as task",
   "t.due_date as due_date",
-  "s.lastname as lastname",
-  "s.firstname as firstname",
+  "s.fullname as fullname",
   "s.id as student_id")
     .join("students as s", "t.student_id", "=", "s.id")
     .where("student_id", studentId);
@@ -63,7 +61,7 @@ function findTasks(studentId) {
 
 function findStudentInfo(profId) {
   return db("students as s")
-  .select("s.id as student_id", "s.lastname as lastname", "s.firstname as firstname")
+  .select("s.id as student_id", "s.fullname as fullname")
   .join("users as u", "s.professor_id", "=", "u.id")
   .where("s.professor_id", profId)
 };

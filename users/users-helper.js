@@ -3,17 +3,12 @@ const Users = require("./users-model");
 function validateUser(user) {
   let errors = [];
 
-  if (!user.lastname || user.lastname.length < 1) {
+  if (!user.fullname || user.fullname.length < 4) {
     errors.push(
-      "Please enter a user last name that contains more than 1 character"
+      "Please enter a user full name that contains more than 1 character"
     );
   }
 
-  if (!user.firstname || user.firstname.length < 2) {
-    errors.push(
-      "Please enter a user first name that contains more 2 characters"
-    );
-  }
   if (!user.username || user.username.length < 2) {
     errors.push("Username must contain at least 4 characters");
   }

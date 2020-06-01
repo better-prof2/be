@@ -56,7 +56,7 @@ router.get("/:id/messages", (req, res) => {
     }
   });
 
-  router.get("/:id/tasks", (req, res) => {
+  router.get("/:id/projects", (req, res) => {
     const { id } = req.params;
     if (!id) {
       res.status(404).json({

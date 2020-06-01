@@ -14,7 +14,7 @@ module.exports = {
   
   function find() {
     return db("users as u")
-    .select("u.id as id", "u.lastname as lastname", "u.firstname as firstname", "u.email as email")
+    .select("u.id as id", "u.fullname as fullname", "u.email as email")
   }
   
   function findBy(filter) {
@@ -31,14 +31,14 @@ module.exports = {
   
   function findUserMessages(userId) {
     return db("users as u")
-    .select("u.lastname as lastname", "u.firstname as firstname", "m.message as message", "m.created_at as time_of_message_sent", "m.updated_at as time_of_message_update", "m.student_id as student_id")
+    .select("u.fullname as fullname", "m.message as message", "m.created_at as time_of_message_sent", "m.updated_at as time_of_message_update", "m.student_id as student_id")
     .join("messages as m", "m.professor_id", "=", "u.id")
     .where("professor_id", userId);
   };
   
   function findUserInfo(userId) {
     return db("students as s")
-    .select("s.lastname as lastname", "s.firstname as firstname", "s.email as email", "s.id as student_id")
+    .select("s.fullname as fullname", "s.email as email", "s.id as student_id")
     .join("users as u", "s.professor_id", "=", "u.id")
     .where("s.professor_id", userId)
   };
