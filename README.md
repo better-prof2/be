@@ -32,12 +32,12 @@ Base URL: https://better-professor1.herokuapp.com/
 
 BODY
 
-| NAME | TYPE | REQUIRED |
-| ---- | ---- | -------- | 
+| NAME | TYPE | REQUIRED | DETAILS |
+| ---- | ---- | -------- | ------- |
 | fullname | string | yes | full name |
 | username | string | yes | username (required for login) | 
 | password | string | yes | password (required for login) | 
-| email | | string | yes | email |
+| email | string | yes | email |
 | role:admin | string | no | 
 
 EXAMPLE
