@@ -6,7 +6,7 @@ Base URL: https://better-professor1.herokuapp.com/
 
 # API ENDPOINTS 
 
-# Pofessor Register And Login 
+# Pofessor Register/Login/Other 
 
 | DESCRIPTION | TYPE | ENDPOINT |
 | ----------- | ---- | -------- | 
@@ -17,7 +17,18 @@ Base URL: https://better-professor1.herokuapp.com/
 | ----------- | ---- | -------- | 
 | Login Professor | POST | /api/login |
 
-# Student Register And Login 
+
+| DESCRIPTION | TYPE | ENDPOINT |
+| ----------- | ---- | -------- | 
+| get professor's students | GET | /api/users/all-students/:id |
+| get professor's messages | GET | /api/users/:id/messages |
+| add students | POST | api/users/:id/students |
+| add messages | POST | /api/users/:id/messages | 
+| update professor | PUT | 	/api/users/:id |
+| delete professor | DEL |  /api/users/:id |
+
+
+# Student Register/Login/Other
 
 | DESCRIPTION | TYPE | ENDPOINT |
 | ----------- | ---- | -------- | 
@@ -27,6 +38,16 @@ Base URL: https://better-professor1.herokuapp.com/
 | DESCRIPTION | TYPE | ENDPOINT |
 | ----------- | ---- | -------- | 
 | Login Student | POST | /api/auth/login/students |
+
+
+| DESCRIPTION | TYPE | ENDPOINT |
+| ----------- | ---- | -------- | 
+| get all student's | GET | /api/students |
+| get student's projects | GET | /api/students/:id/projects |
+| get student's messages | GET | /api/students/:id/messages |
+| add student | POST | /api/students |
+| update student | PUT | /api/students/:id/ |
+| delete student | DEL | /api/students/:id/ |
 
 
 
@@ -53,3 +74,8 @@ EXAMPLE
 
 ```
 
+# LOGOUT ENDPOINT 
+
+| DESCRIPTION | TYPE | ENDPOINT |
+| ----------- | ---- | -------- |
+| logout | GET | /api/auth/logout |
