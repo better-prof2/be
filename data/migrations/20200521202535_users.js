@@ -2,8 +2,7 @@ exports.up = async function(knex, Promise) {
   await knex.schema
     .createTable("users", tbl => {
       tbl.increments();
-      tbl.string("lastname", 128).notNullable();
-      tbl.string("firstname", 128).notNullable();
+      tbl.string("fullname", 128).notNullable();
       tbl.string("username", 128).notNullable();
       tbl.string("password", 128).notNullable();
       tbl
@@ -14,8 +13,7 @@ exports.up = async function(knex, Promise) {
     })
     .createTable("students", tbl => {
       tbl.increments();
-      tbl.string("lastname", 128).notNullable();
-      tbl.string("firstname", 128).notNullable();
+      tbl.string("fullname", 128).notNullable();
       tbl.string("username", 128).notNullable();
       tbl.string("password", 128).notNullable();
       tbl
