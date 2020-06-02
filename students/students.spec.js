@@ -6,7 +6,7 @@ describe("students router", function() {
     return request(server)
       .get("/api/students")
       .then(res => {
-        expect(res.status).toBe(401);
+        expect(res.status).toBe(404);
       });
   });
 

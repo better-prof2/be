@@ -2,7 +2,7 @@
 
 Base URL: https://better-professor1.herokuapp.com/
 
-##################################################
+#################################################
 
 # API ENDPOINTS 
 
@@ -15,7 +15,7 @@ Base URL: https://better-professor1.herokuapp.com/
 
 | DESCRIPTION | TYPE | ENDPOINT |
 | ----------- | ---- | -------- | 
-| Login Professor | POST | /api/login |
+| Login Professor | POST | /api/auth/login |
 
 
 | DESCRIPTION | TYPE | ENDPOINT |
